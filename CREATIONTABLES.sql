@@ -1,4 +1,3 @@
-
 CREATE TABLE TYPES(
     id int AUTO_INCREMENT,
     nom varchar(20),
