@@ -1,3 +1,5 @@
+/* DETAIL DES INSERTS POUR LA BDD RESA-EVENTS*/
+
 INSERT INTO TYPES (nom) VALUES
 ('concert'),
 ('musee'),
