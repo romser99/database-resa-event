@@ -1,5 +1,4 @@
 
-
 CREATE TABLE TYPES(
     id int AUTO_INCREMENT,
     nom varchar(20),
@@ -81,6 +80,12 @@ CREATE TABLE PERSONNES(
     mail varchar(120) NOT NULL,
     mdp varchar(20) NOT NULL,
     telephone varchar(13) NOT NULL,
+<<<<<<< HEAD
+    accreditation varchar(10),
+    PRIMARY KEY (id),
+    CREATION DATETIME,
+    mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
+=======
     PRIMARY KEY (id),
     CREATION DATETIME,
     mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -112,6 +117,7 @@ CREATE TABLE ROLES (
     id int AUTO_INCREMENT,
     PRIMARY KEY (id),
     libelle varchar(20)  
+>>>>>>> e1895b3ded8b28ca113b7db22d2b0800a24c8393
 );
 
 CREATE TABLE QRCODES(
