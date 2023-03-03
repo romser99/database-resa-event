@@ -25,7 +25,7 @@ INSERT INTO agendas ( date_debut, date_fin, horaire_debut, horaire_fin, id_evene
 INSERT INTO agendas ( date_debut, date_fin, horaire_debut, horaire_fin, id_evenements ) VALUES ( '2023-04-08', '2023-04-08' , '11:00:00' , '15:00:00', (select id from evenements where nom = 'exposition Channel'));
 INSERT INTO agendas ( date_debut, date_fin, horaire_debut, horaire_fin, id_evenements ) VALUES ( '2023-03-02', '2023-03-02' , '20:00:00' , '22:00:00', (select id from evenements where nom = 'exposition Victor Hugo'));
 
-
+// changement horaire 
 
 INSERT INTO salles (nom , capacite, id_lieux) VALUES ( 'Salle Louis', '50' , (SELECT id from lieux where nom = 'Louvre')) ;  
 INSERT INTO salles (nom , capacite, id_lieux) VALUES ( 'Salle Charles', '30' , (SELECT id from lieux where nom = 'Louvre')) ;  
