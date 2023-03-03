@@ -1,3 +1,4 @@
+//* Création de la table artistes*/
 CREATE TABLE ARTISTES (
     id int AUTOINCREMENT,
     nom varchar (20),
