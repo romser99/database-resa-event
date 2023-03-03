@@ -66,7 +66,9 @@ INSERT INTO EVENEMENTS(nom, id_types, id_salles) VALUES
 ('Concert Raye', (SELECT id from TYPES WHERE nom = 'Concert Rap'), (SELECT id from LIEUX WHERE nom = 'Paris La Defense Arena'));
 
 INSERT INTO AGENDAS(date_debut, date_fin, horaire_debut, horaire_fin, id_evenements) VALUES
-('2023-06-14', '2023-06-14', '19:00:00', '20:00:00', (SELECT id FROM EVENEMENTS WHERE nom = 'Concert Halsey Jour 1')),
+('2023-06-14', '2023-06-14', '19:00:00', '21:00:00', (SELECT id FROM EVENEMENTS WHERE nom = 'Concert Halsey Jour 1')),
+//màj horaire
 ('2023-06-15', '2023-06-15', '19:00:00', '21:00:00', (SELECT id FROM EVENEMENTS WHERE nom = 'Concert Halsey Jour 1')),
 ('2023-11-24', '2023-11-24', '19:00:00', '20:30:00', (SELECT id FROM EVENEMENTS WHERE nom = 'Concert Raye'));
+
 
