@@ -10,3 +10,5 @@ CREATE TABLE PERSONNES (
     creation DATETIME DEFAULT CURRENT_TIMESTAMP,
     mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+/*ajoute la table personnes dans la BDD */
