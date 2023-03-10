@@ -1,4 +1,6 @@
 
+/* BLABALBLBLABLALABLABABALBALBLABLABLABA*/
+
 INSERT INTO LIEUX (nom, pays, adresse, region) values
     ("musee de l'orangerie","france","Jardin Tuileries, 75001 Paris","ile-de-france"),
     ("fondation louis vuitton","france","8 Av. du Mahatma Gandhi, 75116 Paris","ile-de-france");
