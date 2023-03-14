@@ -1,10 +1,11 @@
-CREATE TABLE TYPES(
+
+CREATE TABLE TYPE(
     id int AUTO_INCREMENT,
     nom varchar(20),
     PRIMARY KEY (id)
 );
 
-CREATE TABLE LIEUX (
+CREATE TABLE ADRESSE(
    id int AUTO_INCREMENT,
    nom varchar(60),
    pays varchar(20),
@@ -14,47 +15,55 @@ CREATE TABLE LIEUX (
    PRIMARY KEY (id)
 ); 
 
-CREATE TABLE SALLES (
+CREATE TABLE ETABLISSEMENT(
+   id int AUTO_INCREMENT,
+   nom varchar(60),
+   id_adresse int, 
+   PRIMARY KEY (id)
+   CONSTRAINT ADRESSE_FK FOREIGN KEY(id_adresse) REFERENCES ADRESSE(id)
+); 
+
+CREATE TABLE SALLE(
     id int AUTO_INCREMENT, 
     nom varchar(20),
     capacite int , 
-    id_lieux int, 
+    id_lieu int, 
     PRIMARY KEY (id),
-    CONSTRAINT LIEUX_FK FOREIGN KEY(id_lieux) REFERENCES LIEUX(id)
+    CONSTRAINT LIEU_FK FOREIGN KEY(id_lieu) REFERENCES LIEU(id)
 );
 
-CREATE TABLE PLACES(
+CREATE TABLE PLACE(
     id int AUTO_INCREMENT,
     categorie varchar(20),
     prix REAL NOT NULL, 
-    id_salles int, 
+    id_salle int, 
     PRIMARY KEY (id), 
-    CONSTRAINT SALLE_FK FOREIGN KEY (id_salles) REFERENCES SALLES(id)
+    CONSTRAINT SALLE_FK FOREIGN KEY (id_salle) REFERENCES SALLE(id)
 ); 
 
-CREATE TABLE EVENEMENTS(
+CREATE TABLE EVENEMENT(
     id int AUTO_INCREMENT,
     nom varchar(20),
     detail varchar(500),
-    id_types int,
-    id_salles int,
+    id_type int,
+    id_salle int,
     PRIMARY KEY (id),
-    CONSTRAINT TYPES_FK FOREIGN KEY(id_types) REFERENCES TYPES(id),
-    CONSTRAINT SALLES_FK FOREIGN KEY(id_salles) REFERENCES SALLES(id)
+    CONSTRAINT TYPE_FK FOREIGN KEY(id_type) REFERENCES TYPE(id),
+    CONSTRAINT SALLE_FK FOREIGN KEY(id_salle) REFERENCES SALLE(id)
 );
 
-CREATE TABLE AGENDAS(
+CREATE TABLE AGENDA(
     id int AUTO_INCREMENT, 
     date_debut date, 
     date_fin date, 
     horaire_debut time, 
     horaire_fin time, 
-    id_evenements int,
+    id_evenement int,
     PRIMARY KEY (id),
-    FOREIGN KEY(id_evenements) REFERENCES EVENEMENTS(id)
+    FOREIGN KEY(id_evenement) REFERENCES EVENEMENT(id)
 );
 
-CREATE TABLE ARTISTES(
+CREATE TABLE ARTISTE(
     id int AUTO_INCREMENT,
     nom varchar (20),
     genre varchar (20),
@@ -63,80 +72,73 @@ CREATE TABLE ARTISTES(
     mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE PARTICIPATIONS(
+CREATE TABLE PARTICIPATION(
     id int AUTO_INCREMENT,
-    id_evenements int,
-    id_artistes int,
+    id_evenement int,
+    id_artiste int,
     PRIMARY KEY (id),
-    CONSTRAINT EVENEMENTS_PARTICIPATIONS_FK FOREIGN KEY (id_evenements) REFERENCES EVENEMENTS(id),
-    CONSTRAINT ARTISTES_FK FOREIGN KEY (id_artistes) REFERENCES ARTISTES(id)
+    CONSTRAINT EVENEMENT_PARTICIPATION_FK FOREIGN KEY (id_evenement) REFERENCES EVENEMENT(id),
+    CONSTRAINT ARTISTE_FK FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id)
 );
 
-CREATE TABLE PERSONNES(
+CREATE TABLE PERSONNE(
     id int AUTO_INCREMENT,
     nom varchar(20) NOT NULL,
     prenom varchar(20) NOT NULL,
     mail varchar(120) NOT NULL,
     mdp varchar(20) NOT NULL,
     telephone varchar(13) NOT NULL,
-<<<<<<< HEAD
-    accreditation varchar(10),
-    PRIMARY KEY (id),
-    CREATION DATETIME,
-    mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
-=======
     PRIMARY KEY (id),
     CREATION DATETIME,
     mise_a_jour DATETIME DEFAULT CURRENT_TIMESTAMP
 
 );
 
-CREATE TABLE EQUIPES(
+CREATE TABLE EQUIPE(
     id int AUTO_INCREMENT,
-    id_personnes int,
+    id_personne int,
     PRIMARY KEY (id),
-    CONSTRAINT EQUIPE_IS_PERSONNE_FK  FOREIGN KEY (id_personnes) REFERENCES PERSONNES (id)
+    CONSTRAINT EQUIPE_IS_PERSONNE_FK  FOREIGN KEY (id_personne) REFERENCES PERSONNE(id)
 );
 
-CREATE TABLE CLIENTS(
+CREATE TABLE CLIENT(
     id int AUTO_INCREMENT,
-    id_personnes int,
+    id_personne int,
     PRIMARY KEY (id),
-    CONSTRAINT CLIENT_IS_PERSONNE_FK  FOREIGN KEY (id_personnes) REFERENCES PERSONNES (id)
+    CONSTRAINT CLIENT_IS_PERSONNE_FK  FOREIGN KEY (id_personne) REFERENCES PERSONNE(id)
 );
 
-CREATE TABLE GESTIONNAIRES(
+CREATE TABLE GESTIONNAIRE(
     id int AUTO_INCREMENT,
-    id_personnes int,
+    id_personne int,
     PRIMARY KEY (id),
-    CONSTRAINT GESTIONNAIRE_IS_PERSONNE_FK  FOREIGN KEY (id_personnes) REFERENCES PERSONNES (id)
+    CONSTRAINT GESTIONNAIRE_IS_PERSONNE_FK  FOREIGN KEY (id_personne) REFERENCES PERSONNE(id)
 );
 
-CREATE TABLE ROLES (
+CREATE TABLE ROLE(
     id int AUTO_INCREMENT,
     PRIMARY KEY (id),
     libelle varchar(20)  
->>>>>>> e1895b3ded8b28ca113b7db22d2b0800a24c8393
 );
 
-CREATE TABLE QRCODES(
+CREATE TABLE QRCODE(
     id int AUTO_INCREMENT, 
     PRIMARY KEY (id),
     lien varchar(50)
 );
 
-CREATE TABLE RESERVATIONS(
+CREATE TABLE RESERVATION(
     id int AUTO_INCREMENT, 
-    id_qrcodes int, 
-    id_personnes int, 
-    id_places int, 
-    id_evenements int,
+    id_qrcode int, 
+    id_personne int, 
+    id_place int, 
+    id_evenement int,
     PRIMARY KEY (id),
-    CONSTRAINT QRCODES_FK FOREIGN KEY(id_qrcodes) REFERENCES QRCODES(id), 
-    CONSTRAINT PERSONNES_FK FOREIGN KEY(id_personnes) REFERENCES PERSONNES(id),
-    CONSTRAINT PLACES_FK FOREIGN KEY(id_places) REFERENCES PLACES(id),
-    CONSTRAINT EVENEMENTS_RESERVATIONS_FK FOREIGN KEY(id_evenements) REFERENCES EVENEMENTS(id),
-    CONSTRAINT UNICITE UNIQUE(id_personnes, id_places, id_evenements)
+    CONSTRAINT QRCODE_FK FOREIGN KEY(id_qrcode) REFERENCES QRCODE(id), 
+    CONSTRAINT PERSONNE_FK FOREIGN KEY(id_personne) REFERENCES PERSONNE(id),
+    CONSTRAINT PLACE_FK FOREIGN KEY(id_place) REFERENCES PLACE(id),
+    CONSTRAINT EVENEMENT_RESERVATION_FK FOREIGN KEY(id_evenement) REFERENCES EVENEMENT(id),
+    CONSTRAINT UNICITE UNIQUE(id_personne, id_place, id_evenement)
 );
 
 
