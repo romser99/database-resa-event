@@ -19,7 +19,7 @@ CREATE TABLE ETABLISSEMENT(
    id int AUTO_INCREMENT,
    nom varchar(60),
    id_adresse int, 
-   PRIMARY KEY (id)
+   PRIMARY KEY (id),
    CONSTRAINT ADRESSE_FK FOREIGN KEY(id_adresse) REFERENCES ADRESSE(id)
 ); 
 
