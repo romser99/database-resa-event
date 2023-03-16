@@ -46,6 +46,7 @@ CREATE TABLE EVENEMENT(
     id int AUTO_INCREMENT,
     nom varchar(20),
     detail varchar(500),
+    picture varchar(200),
     id_type int,
     id_salle int,
     PRIMARY KEY (id),
