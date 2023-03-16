@@ -97,7 +97,7 @@ CREATE TABLE CLIENT(
 CREATE TABLE QRCODE(
     id int AUTO_INCREMENT, 
     PRIMARY KEY (id),
-    lien varchar(50)
+    url varchar(50)
 );
 
 CREATE TABLE RESERVATION(
