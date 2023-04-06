@@ -237,6 +237,7 @@ INSERT INTO CLIENT (prenom, nom, mail, telephone, motdepasse) VALUES
 ("Harrington", "Martin", "harringtonmartin@gmail.com", "0625489625", "kfdjgli888cpefk"),
 ("Lucille", "Reed", "lucillereed@gmail.com", "0623584756", "sjkfhs88dpeo"),
 ("Ellis", "Rosa", "ellisrosa@gmail.com", "0652355656", "jdkkdc56df");
+("John", "Ver", "johanan76hp@gmail.com", "0652355659", "jdkkdcvrfz");
 
 INSERT INTO ROLE (libelle) VALUES
 ("Administrateur"),
