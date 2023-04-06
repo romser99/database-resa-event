@@ -1,0 +1,118 @@
+CREATE DATABASE resaevent;
+
+USE EVENTIVA;
+
+CREATE TABLE TYPE (
+    id int AUTO_INCREMENT,
+    nom varchar(20),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE ADRESSE (
+   id int AUTO_INCREMENT,
+   numero int,
+   rue varchar(100),
+   ville varchar(60),
+   codepostal int,
+   region varchar(60),
+   pays varchar(60),
+   PRIMARY KEY (id)
+); 
+
+CREATE TABLE LIEU (
+   id int AUTO_INCREMENT,
+   nom varchar(60),
+   id_adresse int, 
+   PRIMARY KEY (id),
+   CONSTRAINT ADRESSE_LIEU_FK FOREIGN KEY(id_adresse) REFERENCES ADRESSE(id)
+); 
+
+CREATE TABLE SALLE (
+    id int AUTO_INCREMENT, 
+    nom varchar(100),
+    capacite int , 
+    id_lieu int, 
+    PRIMARY KEY (id),
+    CONSTRAINT LIEU_SALLE_FK FOREIGN KEY(id_lieu) REFERENCES LIEU(id)
+);
+
+CREATE TABLE PLACE (
+    id int AUTO_INCREMENT,
+    categorie varchar(50),
+    prix REAL NOT NULL, 
+    id_salle int, 
+    PRIMARY KEY (id), 
+    CONSTRAINT SALLE_PLACE_FK FOREIGN KEY (id_salle) REFERENCES SALLE(id)
+); 
+
+CREATE TABLE EVENEMENT (
+    id int AUTO_INCREMENT,
+    nom varchar(100),
+    description varchar(500),
+    picture varchar(1000),
+    id_type int,
+    PRIMARY KEY (id),
+    CONSTRAINT TYPE_EVENEMENT_FK FOREIGN KEY(id_type) REFERENCES TYPE(id)
+);
+
+CREATE TABLE AGENDA (
+    id int AUTO_INCREMENT, 
+    date_debut date, 
+    date_fin date, 
+    horaire_debut time, 
+    horaire_fin time, 
+    id_evenement int,
+    id_salle int,
+    PRIMARY KEY (id),
+    CONSTRAINT EVENEMENT_AGENDA_FK FOREIGN KEY(id_evenement) REFERENCES EVENEMENT(id),
+    CONSTRAINT SALLE_AGENDA_FK FOREIGN KEY(id_salle) REFERENCES SALLE(id)
+);
+
+CREATE TABLE ARTISTE (
+    id int AUTO_INCREMENT,
+    nom varchar (50),
+    genre varchar (50),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE CLIENT (
+    user_id int AUTO_INCREMENT,
+    prenom varchar(50),
+    nom varchar(100),
+    mail varchar(100),
+    telephone varchar(15),
+    motdepasse varchar(400),
+    enabled boolean default true,
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE RESERVATION(
+    id int AUTO_INCREMENT,
+    id_client int, 
+    id_place int, 
+    id_evenement int,
+    id_agenda int,
+    PRIMARY KEY (id),
+    CONSTRAINT CLIENT_RESERVATION_FK FOREIGN KEY(id_client) REFERENCES CLIENT(user_id),
+    CONSTRAINT PLACE_RESERVATION_FK FOREIGN KEY(id_place) REFERENCES PLACE(id),
+    CONSTRAINT EVENEMENT_RESERVATION_FK FOREIGN KEY(id_evenement) REFERENCES EVENEMENT(id),
+    CONSTRAINT AGENDA_RESERVATION_FK FOREIGN KEY(id_agenda) REFERENCES AGENDA(id),
+    CONSTRAINT UNICITE UNIQUE(id_client, id_place, id_evenement)
+);
+
+CREATE TABLE ROLE (
+    role_id int AUTO_INCREMENT,
+    libelle varchar(50),
+    PRIMARY KEY (role_id)
+);
+
+CREATE TABLE USER_ROLES (
+    id int AUTO_INCREMENT,
+    user_id int NOT NULL,
+    role_id int NOT NULL,
+    KEY user_fk_idx (user_id),
+    KEY role_fk_idx (role_id),
+    PRIMARY KEY (id),
+    CONSTRAINT ROLE_FK FOREIGN KEY (role_id) REFERENCES ROLE (role_id),
+    CONSTRAINT USER_FK FOREIGN KEY (user_id) REFERENCES CLIENT (user_id)
+);
