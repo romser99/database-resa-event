@@ -245,5 +245,5 @@ INSERT INTO ROLE (libelle) VALUES
 ("Développeur");
 
 INSERT INTO USER_ROLES (user_id, role_id) VALUES
-((SELECT user_id FROM CLIENT WHERE mail = "reillykline@gmail.com"), (SELECT role_id FROM ROLE WHERE libelle = "Administrateur")),
-((SELECT user_id FROM CLIENT WHERE mail = "janetwilkinson@gmail.com"), (SELECT role_id FROM ROLE WHERE libelle = "Utilisateur"));
+((SELECT id FROM CLIENT WHERE mail = "reillykline@gmail.com"), (SELECT id FROM ROLE WHERE libelle = "Administrateur")),
+((SELECT id FROM CLIENT WHERE mail = "janetwilkinson@gmail.com"), (SELECT id FROM ROLE WHERE libelle = "Utilisateur"));
