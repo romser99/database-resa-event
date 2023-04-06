@@ -76,7 +76,7 @@ CREATE TABLE ARTISTE (
 );
 
 CREATE TABLE CLIENT (
-    user_id int AUTO_INCREMENT,
+    id int AUTO_INCREMENT,
     prenom varchar(50),
     nom varchar(100),
     mail varchar(100),
@@ -101,7 +101,7 @@ CREATE TABLE RESERVATION(
 );
 
 CREATE TABLE ROLE (
-    role_id int AUTO_INCREMENT,
+    id int AUTO_INCREMENT,
     libelle varchar(50),
     PRIMARY KEY (role_id)
 );
@@ -113,6 +113,6 @@ CREATE TABLE USER_ROLES (
     KEY user_fk_idx (user_id),
     KEY role_fk_idx (role_id),
     PRIMARY KEY (id),
-    CONSTRAINT ROLE_FK FOREIGN KEY (role_id) REFERENCES ROLE (role_id),
-    CONSTRAINT USER_FK FOREIGN KEY (user_id) REFERENCES CLIENT (user_id)
+    CONSTRAINT ROLE_FK FOREIGN KEY (role_id) REFERENCES ROLE (id),
+    CONSTRAINT USER_FK FOREIGN KEY (user_id) REFERENCES CLIENT (id)
 );
