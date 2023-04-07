@@ -188,11 +188,6 @@ INSERT INTO EVENEMENT (nom, description, picture, id_type) VALUES
 
 INSERT INTO AGENDA (date_debut, date_fin, horaire_debut, horaire_fin, id_evenement, id_salle) VALUES
 ('2022-10-15', '2023-08-20', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du Louvre"))),
-('2022-10-17', '2023-08-28', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée Carnavalet"))),
-('2022-10-23', '2023-09-02', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Petit Palais"))),
-('2022-10-24', '2023-09-03', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée de l'Orangerie"))),
-('2022-10-24', '2023-09-03', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du quai Branly"))),
-('2022-04-24', '2023-04-24', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "One Night of Elvis"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Salle Pleyel"))),
 ('2022-04-25', '2023-04-25', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Nobuo Uematsu Contiki"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Salle Pleyel"))),
 ('2022-04-26', '2023-04-26', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "La Grande Sophie"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "La Cigale"))),
 ('2022-04-28', '2023-04-28', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Lord Esperanza"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Le Trianon"))),
