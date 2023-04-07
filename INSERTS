@@ -309,12 +309,12 @@ INSERT INTO EVENEMENT (nom, description, picture, id_type) VALUES
 ("Rock en Seine", "Un festival de rock très attendu chaque année", "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/TSNMW5ZFQRF6NPX3SEWD6ELUVY.jpg", (SELECT id FROM TYPE WHERE nom = "Festival"));
 
 INSERT INTO AGENDA (date_debut, date_fin, horaire_debut, horaire_fin, id_evenement, id_salle) VALUES
-('2022-10-15', '2023-08-20', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du Louvre"))),
-('2022-10-25', '2023-08-30', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée Carnavalet"))),
-('2023-01-15', '2023-10-20', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Petit Palais"))),
-('2022-10-15', '2023-08-20', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée de l'Orangerie"))),
-('2022-10-25', '2023-07-10', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du quai Branly"))),
-('2022-11-15', '2023-09-20', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée d'Art moderne"))),
+('2023-10-15', '2023-10-15', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du Louvre"))),
+('2023-10-25', '2023-10-25', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée Carnavalet"))),
+('2023-11-15', '2023-11-15', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Petit Palais"))),
+('2023-11-15', '2023-11-15', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée de l'Orangerie"))),
+('2023-10-25', '2023-10-25', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée du quai Branly"))),
+('2023-11-15', '2023-11-15', '09:00:00', '18:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Exposition permanente"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Musée d'Art moderne"))),
 ('2023-05-25', '2023-05-25', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "One Night of Elvis"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Salle Pleyel"))),
 ('2023-06-25', '2023-06-25', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "Nobuo Uematsu Contiki"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Salle Pleyel"))),
 ('2023-07-25', '2023-07-25', '20:30:00', '22:00:00', (SELECT id FROM EVENEMENT WHERE nom = "EELS"), (SELECT id FROM SALLE WHERE id_lieu = (SELECT id FROM LIEU WHERE nom = "Salle Pleyel"))),
